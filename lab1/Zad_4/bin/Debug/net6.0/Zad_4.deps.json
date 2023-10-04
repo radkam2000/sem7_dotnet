@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "lab1/1.0.0": {
+      "Zad_4/1.0.0": {
         "runtime": {
-          "lab1.dll": {}
+          "Zad_4.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "lab1/1.0.0": {
+    "Zad_4/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
