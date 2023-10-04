@@ -1,0 +1,15 @@
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/obj/Debug/net6.0/Zad_1.csproj.AssemblyReference.cache
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/obj/Debug/net6.0/Zad_1.GeneratedMSBuildEditorConfig.editorconfig
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/obj/Debug/net6.0/Zad_1.AssemblyInfoInputs.cache
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/obj/Debug/net6.0/Zad_1.AssemblyInfo.cs
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/obj/Debug/net6.0/Zad_1.csproj.CoreCompileInputs.cache
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/bin/Debug/net6.0/Zad_1
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/bin/Debug/net6.0/Zad_1.deps.json
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/bin/Debug/net6.0/Zad_1.runtimeconfig.json
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/bin/Debug/net6.0/Zad_1.dll
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/bin/Debug/net6.0/ref/Zad_1.dll
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/bin/Debug/net6.0/Zad_1.pdb
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/obj/Debug/net6.0/Zad_1.dll
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/obj/Debug/net6.0/ref/Zad_1.dll
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/obj/Debug/net6.0/Zad_1.pdb
+/home/student/dotNET/sem7_dotnet/lab2/Zad_1/obj/Debug/net6.0/Zad_1.genruntimeconfig.cache
