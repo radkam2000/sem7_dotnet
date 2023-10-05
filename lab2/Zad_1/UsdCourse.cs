@@ -1,3 +1,5 @@
+using System.Globalization;
+
 class UsdCourse
 {
     public static float Current = 0;
@@ -20,7 +22,7 @@ class UsdCourse
                 System.Xml.XmlElement w = (System.Xml.XmlElement)pp.GetElementsByTagName("kod_waluty")[0];
                 if (w.InnerText == "USD")
                 {
-                    return Convert.ToSingle(pp.GetElementsByTagName("kurs_sredni")[0].InnerText);
+                    return Convert.ToSingle(pp.GetElementsByTagName("kurs_sredni")[0].InnerText, CultureInfo.CreateSpecificCulture("pl"));
                 }
             }
         }
