@@ -1,9 +1,9 @@
 namespace Zad_1;
 internal class Fruit
 {
-    String Name { get; set; }
-    Boolean IsSweet { get; set; }
-    Double Price { get; set; }
+    public String Name { get; set; }
+    public Boolean IsSweet { get; set; }
+    public Double Price { get; set; }
 
     public override string ToString()
     {
