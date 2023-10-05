@@ -1,6 +1,6 @@
 using System.Globalization;
 
-class MyFormatter
+public class MyFormatter
 {
     public static string FormatUsdPrice(double price)
     {
