@@ -2,9 +2,6 @@
 using Zad_1;
 UsdCourse.Current = await UsdCourse.GetUsdCourseAsync();
 
-// Console.WriteLine(Double.TryParse("4,44", NumberStyles.Any, CultureInfo.CreateSpecificCulture("pl"), out double number));
-// Console.WriteLine(number);
-
 List<Fruit> fruits = new List<Fruit>();
 for (int i = 0; i < 15; i++)
 {
