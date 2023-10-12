@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ImageMagick;
 
 namespace lab4.Pages
 {
@@ -32,10 +33,19 @@ namespace lab4.Pages
                         break;
                 }
                 var fileName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName()) + extension;
-
                 using (var fs = System.IO.File.OpenWrite(Path.Combine(imagesDir, fileName)))
                 {
                     Upload.CopyTo(fs);
+                    using var image = new MagickImage(Path.Combine(imagesDir, fileName));
+                    using var watermark = new MagickImage("watermark.png");
+
+                    // przezroczystosc znaku wodnego
+                    watermark.Evaluate(Channels.Alpha, EvaluateOperator.Divide, 4);
+
+                    // narysowanie znaku wodnego
+                    image.Composite(watermark, Gravity.Southeast, CompositeOperator.Over);
+
+                    image.Write(Path.Combine(imagesDir, fileName));
                 }
             }
 

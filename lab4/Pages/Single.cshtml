@@ -1,0 +1,20 @@
+@page "{image}"
+@model lab4.Pages.SingleModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Single</title>
+</head>
+
+<body>
+    <img src="~/images/@Model.Image" class="img-fluid" />
+</body>
+
+</html>
