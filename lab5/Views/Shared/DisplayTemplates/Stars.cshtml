@@ -1,0 +1,17 @@
+@model string
+@{
+    var stars = Convert.ToInt32(Model);
+}
+<span title="@Model">
+    @for (int i = 0; i < 5; i++)
+    {
+        if (i < stars)
+        {
+            @Html.Raw("&#x2605;")
+        }
+        else
+        {
+            @Html.Raw("&#x2606;")
+        }
+    }
+</span>
