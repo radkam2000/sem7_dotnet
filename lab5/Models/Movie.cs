@@ -13,6 +13,8 @@ namespace lab5.Models
         public string Title { get; set; }
         [UIHint("Stars")]
         public string Rating { get; set; }
+        [UIHint("Frame")]
+        [UIHint("Link")]
         public string TrailerLink { get; set; }
         [UIHint("LongText")]
         public string Description { get; set; }
