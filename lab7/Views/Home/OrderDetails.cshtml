@@ -1,0 +1,79 @@
+@model lab7.Models.Invoice
+    
+@{
+    ViewData["Title"] = "OrderDetails";
+}
+
+<h1>OrderDetails</h1>
+
+<div>
+    <h4>Ordered Songs</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvoiceLines)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvoiceLines)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvoiceDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvoiceDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BillingAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BillingAddress),
+            @Html.DisplayFor(model => model.BillingCity),
+            @Html.DisplayFor(model => model.BillingState),
+            @Html.DisplayFor(model => model.BillingCountry)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+    </dl>
+
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillingAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.InvoiceLines)
+        {
+                    <tr>
+                        <td>
+                    @Html.DisplayFor(modelItem => item.TrackId)
+                        </td>
+                        <td>
+                    @Html.DisplayFor(modelItem => item.Track)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.UnitPrice),
+                    </td>
+                    </tr>
+        }
+    </tbody>
+</table>
+</div>
+<div>
+    <a asp-action="MyOrders">Back to List</a>
+</div>

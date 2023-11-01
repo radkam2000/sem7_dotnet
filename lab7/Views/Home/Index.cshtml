@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<a asp-action="MyOrders">My Orders</a>
+<div class="text-center">
+    <div>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@item.Email</li>
+            }
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+@model IEnumerable<lab7.Models.Invoice>
+
+@{
+    ViewData["Title"] = "MyOrders";
+}
+
+<h1>MyOrders</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillingAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+        {
+                    <tr>
+                        <td>
+                            <a asp-action="OrderDetails" asp-route-id="@item.InvoiceId"> @Html.DisplayFor(modelItem => item.InvoiceId)</a> 
+                        </td>
+                        <td>
+                    @Convert.ToDateTime(item.InvoiceDate).ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                    @Html.DisplayFor(modelItem => item.BillingAddress),
+                    @Html.DisplayFor(modelItem => item.BillingCity),
+                    @Html.DisplayFor(modelItem => item.BillingState),
+                    @Html.DisplayFor(modelItem => item.BillingCountry),
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+                        <td>
+                            <a asp-action="OrderDetails" asp-route-id="@item.InvoiceId">Details</a> 
+                        </td>
+                    </tr>
+        }
+    </tbody>
+</table>
