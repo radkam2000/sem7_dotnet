@@ -1,4 +1,4 @@
-@model Lab6.Models.Movie
+@model Lab6.Models.MovieDto
 
 @{
     ViewData["Title"] = "Edit";
@@ -17,6 +17,17 @@
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <datalist id="genres">
+                    @foreach (var item in Model.AllGenres)
+                    {
+                        @Html.Raw($"<option value=\"{item}\">")
+                    }
+                </datalist>
+                <label asp-for="Genre" class="control-label"></label>
+                <input asp-for="Genre" class="form-control" list="genres" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>

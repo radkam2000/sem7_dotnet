@@ -90,13 +90,25 @@ namespace Lab6.Controllers
             {
                 return NotFound();
             }
-
-            var movie = await _context.Movies.FindAsync(id);
+            var movie = _context.Movies.Include(x => x.Genre).FirstOrDefault(x => x.Id == id);
+            // var movie = await _context.Movies.FindAsync(id);
             if (movie == null)
             {
                 return NotFound();
             }
-            return View(movie);
+
+            var m = new MovieDto
+            {
+                AllGenres = _context.Genres.Select(x => x.Name).ToList(),
+                Id = movie.Id,
+                Title = movie.Title,
+                Description = movie.Description,
+                Rating = movie.Rating,
+                TrailerLink = movie.TrailerLink,
+                Genre = movie.Genre.Name
+            };
+
+            return View(m);
         }
 
         // POST: Home/Edit/5
@@ -106,7 +118,7 @@ namespace Lab6.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(
             int id,
-            [Bind("Id,Title,Description,Rating,TrailerLink")] Movie movie
+            [Bind("Id,Title,Description,Rating,TrailerLink,Genre")] MovieDto movie
         )
         {
             if (id != movie.Id)
@@ -118,7 +130,22 @@ namespace Lab6.Controllers
             {
                 try
                 {
-                    _context.Update(movie);
+                    var genre = _context.Genres.FirstOrDefault(x => x.Name == movie.Genre);
+                    if (genre == null)
+                    {
+                        genre = new Genre { Id = 0, Name = movie.Genre };
+                    }
+
+                    Movie m = new Movie
+                    {
+                        Id = id,
+                        Title = movie.Title,
+                        Description = movie.Description,
+                        Rating = movie.Rating,
+                        TrailerLink = movie.TrailerLink,
+                        Genre = genre
+                    };
+                    _context.Update(m);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
