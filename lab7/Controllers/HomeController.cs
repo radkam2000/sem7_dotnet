@@ -55,7 +55,11 @@ public class HomeController : Controller
         var invoice = _chinook.Invoices
             .Include(x => x.InvoiceLines)
             .ThenInclude(x => x.Track)
-            .FirstOrDefault(x => x.InvoiceId == id);
+            .FirstOrDefault(x => x.InvoiceId == id && x.CustomerId == customerId);
+        if (invoice == null)
+        {
+            return View("NotFound");
+        }
 
         return View(invoice);
     }

@@ -1,5 +1,5 @@
 @model lab7.Models.Invoice
-    
+
 @{
     ViewData["Title"] = "OrderDetails";
 }
@@ -11,10 +11,10 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.InvoiceLines)
+            @Html.DisplayNameFor(model => model.InvoiceId)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.InvoiceLines)
+            @Html.DisplayFor(model => model.InvoiceId)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.InvoiceDate)
@@ -30,49 +30,51 @@
             @Html.DisplayFor(model => model.BillingCity),
             @Html.DisplayFor(model => model.BillingState),
             @Html.DisplayFor(model => model.BillingCountry)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Total)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Total)
         </dd>
-    </dl>
 
-    <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.InvoiceId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InvoiceDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BillingAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Total)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.InvoiceLines)
-        {
+
+        <dt class="col-sm-2">Ordered Songs</dt>
+        <dd>
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>
-                    @Html.DisplayFor(modelItem => item.TrackId)
-                        </td>
-                        <td>
-                    @Html.DisplayFor(modelItem => item.Track)
-                    </td>
-                    <td>
-                    @Html.DisplayFor(modelItem => item.UnitPrice),
-                    </td>
+                        <th>
+                            Track Id
+                        </th>
+                        <th>
+                            Track
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th></th>
                     </tr>
-        }
-    </tbody>
-</table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.InvoiceLines)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TrackId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Track.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UnitPrice),
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </dd>
+    </dl>
 </div>
 <div>
     <a asp-action="MyOrders">Back to List</a>

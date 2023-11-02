@@ -8,7 +8,7 @@ namespace lab7.Models
         public long InvoiceLineId { get; set; }
         public long InvoiceId { get; set; }
         public long TrackId { get; set; }
-        public byte[] UnitPrice { get; set; } = null!;
+        public decimal? UnitPrice { get; set; } = null!;
         public long Quantity { get; set; }
 
         public virtual Invoice Invoice { get; set; } = null!;
