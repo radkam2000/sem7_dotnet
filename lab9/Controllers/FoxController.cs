@@ -28,6 +28,7 @@ namespace Lab9.Controllers
         }
 
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult Post([FromBody] Fox fox)
         {
             _repo.Add(fox);
