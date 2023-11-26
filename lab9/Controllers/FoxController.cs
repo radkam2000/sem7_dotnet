@@ -29,7 +29,7 @@ namespace Lab9.Controllers
         }
 
         [HttpPost]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize("IsAdminJwt")]
         public IActionResult Post([FromBody] Fox fox)
         {
             _repo.Add(fox);
@@ -48,6 +48,7 @@ namespace Lab9.Controllers
         }
 
         [HttpPut("love/{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult Love(int id)
         {
             var fox = _repo.Get(id);
@@ -62,6 +63,7 @@ namespace Lab9.Controllers
         }
 
         [HttpPut("hate/{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public IActionResult Hate(int id)
         {
             var fox = _repo.Get(id);

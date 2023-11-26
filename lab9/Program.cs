@@ -48,7 +48,17 @@ builder.Services
         }
     );
 
-builder.Services.AddAuthorization();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy(
+        "IsAdminJwt",
+        policy =>
+            policy
+                .RequireRole("Admin")
+                .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+    );
+});
 
 var app = builder.Build();
 

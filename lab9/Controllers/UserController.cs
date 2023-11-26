@@ -32,12 +32,16 @@ namespace lab9.Controllers
 
             if (result)
             {
-                var claims = new List<Claim>()
-        {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(JwtRegisteredClaimNames.Email, user.Email),
-        };
+                var claims = new List<Claim>(){
+                    new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                };
+
+                foreach (var role in await _user.GetRolesAsync(user))
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, role));
+                }
 
                 var key = new SymmetricSecurityKey(
                     Encoding.UTF8.GetBytes(_configuration["Tokens:Key"])
