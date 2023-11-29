@@ -1,0 +1,20 @@
+<textarea name="tekst" id="text" cols="30" rows="10"></textarea>
+<button onclick=censorText()>Wyslij</button>
+<div id="alert"></div>
+
+<script>
+
+    const output = document.getElementById('alert');
+    const textarea = document.getElementById('text');
+    
+    function censorText() {
+        const uri = `/censor?text=${textarea.value}`;
+    
+        fetch(uri, { method: 'POST' })
+            .then(response => response.text())
+            .then(text => {
+                output.innerText = text;
+            });
+    }
+
+</script>    

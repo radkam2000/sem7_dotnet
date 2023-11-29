@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.Testing;
 using test;
 
@@ -24,5 +25,18 @@ public class ManagerIntegrationTests : IClassFixture<CustomWebApplicationFactory
         var json = JsonSerializer.Deserialize<string[]>(await act.Content.ReadAsStringAsync());
 
         Assert.Empty(json);
+    }
+
+    [Fact]
+    public async void Get_WhenNotEmpty_ReturnNotEmptyList()
+    {
+        const string word = "Slowo";
+        const string URL = "/api/Blacklist?word=" + word;
+        await _client.PostAsync(URL, null);
+        var act = await _client.GetAsync("/api/Blacklist");
+
+        Assert.True(act.IsSuccessStatusCode);
+        var json = JsonSerializer.Deserialize<string[]>(await act.Content.ReadAsStringAsync());
+        Assert.Contains(word, json);
     }
 }

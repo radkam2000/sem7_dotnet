@@ -18,8 +18,9 @@
         /// <returns>Słowo ocenzurowane</returns>
         public string CensorWord(string word)
         {
-            if(Blacklist.Contains(word.ToLower())){
-                return word[0] + new string('*',word.Length-1); 
+            if (Blacklist.Contains(word.ToLower()))
+            {
+                return word[0] + new string('*', word.Length - 1);
             }
             return word;
         }
@@ -34,11 +35,11 @@
         public string CensorText(string text)
         {
             string[] words = text.Split(' ');
-             for (int i = 0; i < words.Length; i++)
-             {
+            for (int i = 0; i < words.Length; i++)
+            {
                 words[i] = CensorWord(words[i]);
-             }
-            return string.Join(' ',words);
+            }
+            return string.Join(' ', words);
         }
     }
 }

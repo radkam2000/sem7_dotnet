@@ -18,18 +18,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
 app.MapPost(
         "/censor",
         async (string text, Censor censor, HttpClient client) =>
         {
             censor.Blacklist = await client.GetFromJsonAsync<List<string>>(
-                "https://localhost:7241/api/blacklist"
+                "http://localhost:5153/api/blacklist"
             );
-            return text;
+            return censor.CensorText(text);
         }
     )
     .WithName("Censor");
-
+app.UseFileServer();
 app.Run();
